@@ -10,6 +10,6 @@ namespace Hobot {
   }
 
   void Application::Run() {
-    
+    while (true);
   }
 }

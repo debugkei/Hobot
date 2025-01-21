@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _APPLICATION_H_
+#define _APPLICATION_H_
+
 #include"Core.h"
 
 namespace Hobot {
@@ -14,3 +17,5 @@ namespace Hobot {
   //To be defined in a client
   Application* CreateApplication();
 }
+
+#endif // _APPLICATION_H_

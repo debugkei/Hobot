@@ -79,6 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_HOBOT_PLATFORM_WINDOWS_;_HOBOT_BUILD_DLL_;_HOBOT_DEBUG_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -100,6 +101,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_HOBOT_PLATFORM_WINDOWS_;_HOBOT_BUILD_DLL_;_HOBOT_RELEASE_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,6 +123,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_HOBOT_PLATFORM_WINDOWS_;_HOBOT_BUILD_DLL_;_HOBOT_DIST_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -142,6 +145,10 @@
     <ClInclude Include="src\Hobot\Application.h" />
     <ClInclude Include="src\Hobot\Core.h" />
     <ClInclude Include="src\Hobot\EntryPoint.h" />
+    <ClInclude Include="src\Hobot\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Hobot\Events\Event.h" />
+    <ClInclude Include="src\Hobot\Events\KeyEvent.h" />
+    <ClInclude Include="src\Hobot\Events\MouseEvent.h" />
     <ClInclude Include="src\Hobot\Logger.h" />
   </ItemGroup>
   <ItemGroup>

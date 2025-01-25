@@ -10,3 +10,8 @@
 #else
   #error hobot only support Windows for now
 #endif
+
+#define BIT(i) 1 << i
+
+//TODO
+  //FIX ?-?-?, timestamp

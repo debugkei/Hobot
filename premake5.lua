@@ -26,7 +26,7 @@ project "Hobot"
 
   includedirs
   {
-
+    "Hobot/src"
   }
   
   filter "system:windows"

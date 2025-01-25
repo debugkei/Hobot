@@ -1,5 +1,7 @@
 #include"Application.h"
 
+#include"Hobot\Events\Event.h"
+
 namespace Hobot {
   Application::Application() {
 

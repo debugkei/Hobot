@@ -4,6 +4,9 @@
     <Filter Include="Hobot">
       <UniqueIdentifier>{2172540D-8D86-7CBE-5608-201EC2DB78EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hobot\Events">
+      <UniqueIdentifier>{E54E92D7-D1B1-217C-7A37-5A326679EDFE}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Hobot.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Hobot\EntryPoint.h">
       <Filter>Hobot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hobot\Events\ApplicationEvent.h">
+      <Filter>Hobot\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hobot\Events\Event.h">
+      <Filter>Hobot\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hobot\Events\KeyEvent.h">
+      <Filter>Hobot\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hobot\Events\MouseEvent.h">
+      <Filter>Hobot\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Hobot\Logger.h">
       <Filter>Hobot</Filter>

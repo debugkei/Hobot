@@ -1,10 +1,8 @@
 #pragma once
 
-#include"Hobot\Core.h"
+#include<htpch.h>
 
-#include<string>
-#include<functional>
-#include<ostream>
+#include"Hobot/Core.h"
 
 namespace Hobot {
 

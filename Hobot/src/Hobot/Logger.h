@@ -3,8 +3,7 @@
 #ifndef _LOGGER_H_
 #define _LOGGER_H_
 
-#include<memory>
-#include<string>
+#include<htpch.h>
 
 #include"Core.h"
 
@@ -22,23 +21,23 @@ namespace Hobot {
 //Logging from engine
 
 //Log info to console, default text color applied
-#define HOBOT_CORE_CWInfo(...)    Hobot::Logger::LogToConsole("Hobot Info", "\033[0m", __VA_ARGS__)
+#define CORE_LOG_INFO(...)    Hobot::Logger::LogToConsole("Hobot Info", "\033[0m", __VA_ARGS__)
 //Log warning to console, yellow color applied
-#define HOBOT_CORE_CWWarning(...) Hobot::Logger::LogToConsole("Hobot Warning", "\033[33m", __VA_ARGS__)
+#define CORE_LOG_WARNING(...) Hobot::Logger::LogToConsole("Hobot Warning", "\033[33m", __VA_ARGS__)
 //Log error to console, red color applied
-#define HOBOT_CORE_CWError(...)   Hobot::Logger::LogToConsole("Hobot Error", "\033[31m", __VA_ARGS__)
+#define CORE_LOG_ERROR(...)   Hobot::Logger::LogToConsole("Hobot Error", "\033[31m", __VA_ARGS__)
 //Log success to console, green color applied
-#define HOBOT_CORE_CWSuccess(...) Hobot::Logger::LogToConsole("Hobot Success", "\033[32m", __VA_ARGS__)
+#define CORE_LOG_SUCCESS(...) Hobot::Logger::LogToConsole("Hobot Success", "\033[32m", __VA_ARGS__)
 
 //Logging from client
 
 //Log info to console, default text color applied
-#define HOBOT_CWInfo(...)         Hobot::Logger::LogToConsole("App Info", "\033[0m", __VA_ARGS__)
+#define LOG_INFO(...)         Hobot::Logger::LogToConsole("App Info", "\033[0m", __VA_ARGS__)
 //Log warning to console, yellow color applied
-#define HOBOT_CWWarning(...)      Hobot::Logger::LogToConsole("App Warning", "\033[33m", __VA_ARGS__)
+#define LOG_WARNING(...)      Hobot::Logger::LogToConsole("App Warning", "\033[33m", __VA_ARGS__)
 //Log error to console, red color applied
-#define HOBOT_CWError(...)        Hobot::Logger::LogToConsole("App Error", "\033[31m", __VA_ARGS__)
+#define LOG_ERROR(...)        Hobot::Logger::LogToConsole("App Error", "\033[31m", __VA_ARGS__)
 //Log success to console, green color applied
-#define HOBOT_CWSuccess(...)      Hobot::Logger::LogToConsole("App Success", "\033[32m", __VA_ARGS__)
+#define LOG_SUCCESS(...)      Hobot::Logger::LogToConsole("App Success", "\033[32m", __VA_ARGS__)
 
 #endif // _LOGGER_H_

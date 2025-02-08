@@ -2,8 +2,6 @@
 
 #include"Event.h"
 
-#include<sstream>
-
 namespace Hobot {
   class HOBOT_API MouseMovedEvent : public Event {
   private:

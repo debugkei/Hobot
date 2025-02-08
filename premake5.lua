@@ -10,10 +10,17 @@ workspace "Hobot"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--Include dirs relative to the root folder (solution dir)
+includeDirs = {}
+includeDirs["glfw"] = "Hobot/vendor/glfw-3.4/include"
+
+include "Hobot/vendor/glfw-3.4" --Include another premake5 file, specific to glfw project
+
 project "Hobot"
   location "Hobot"
   kind "SharedLib"
   language "C++"
+  cppdialect "C++latest"
 
   targetdir("bin/" .. outputDir .. "/%{prj.name}")
   objdir("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -21,16 +28,25 @@ project "Hobot"
   files
   {
     "%{prj.name}/src/**.h",
-    "%{prj.name}/src/**.cpp"
+    "%{prj.name}/src/**.cpp",
   }
+
+  pchheader "htpch.h"
+  pchsource "Hobot/src/htpch.cpp"
 
   includedirs
   {
-    "Hobot/src"
+    "Hobot/src",
+    "%{includeDirs.glfw}"
+  }
+
+  links
+  {
+    "glfw",
+    "OpenGL32"
   }
   
   filter "system:windows"
-    cppdialect "C++20"
     staticruntime "On"
     systemversion "latest"
 
@@ -56,6 +72,7 @@ project "Sandbox"
   location "Sandbox"
   kind "ConsoleApp"
   language "C++"
+  cppdialect "C++latest"
 
   targetdir("bin/" .. outputDir .. "/%{prj.name}")
   objdir("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -63,7 +80,8 @@ project "Sandbox"
   files
   {
     "%{prj.name}/src/**.h",
-    "%{prj.name}/src/**.cpp"
+    "%{prj.name}/src/**.cpp",
+    "%{prj.name}/src/**.ixx"
   }
 
   includedirs
@@ -77,7 +95,6 @@ project "Sandbox"
   }
 
   filter "system:windows"
-    cppdialect "C++20"
     staticruntime "On"
     systemversion "latest"
 
@@ -88,7 +105,8 @@ project "Sandbox"
 
     prebuildcommands
     {
-      ("{COPY} ../bin/" .. outputDir .. "/Hobot/Hobot.dll ../bin/" .. outputDir .. "/Sandbox/")
+      ("mkdir -p ../bin/" .. outputDir .. "/Sandbox/"),
+      ("cp ../bin/" .. outputDir .. "/Hobot/Hobot.dll ../bin/" .. outputDir .. "/Sandbox/")
     }
 
   filter "configurations:Debug"

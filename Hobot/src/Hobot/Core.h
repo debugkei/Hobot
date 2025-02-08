@@ -8,10 +8,12 @@
     #define HOBOT_API __declspec(dllimport)
   #endif
 #else
-  #error hobot only support Windows for now
+  //So that vs code doesnt cry that its not defined, it gets defined when make is called
+  #define HOBOT_API
 #endif
 
 #define BIT(i) 1 << i
 
 //TODO
-  //FIX ?-?-?, timestamp
+  //FIX timestamp
+  //Assert/Print macro

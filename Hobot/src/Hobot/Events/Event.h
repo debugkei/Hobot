@@ -52,14 +52,14 @@ namespace Hobot {
   class HOBOT_API EventDispatcher {
   private:
     template<class T>
-    using EventFc = std::function<bool(T&)>;
+    using EventFunc = std::function<bool(T&)>;
     Event& _event;
   public:
     EventDispatcher(Event& event)
       : _event(event) { }
 
     template<class T>
-    bool Dispatch(EventFc<T> func) {
+    bool Dispatch(EventFunc<T> func) {
       if (_event.GetEventType() == T::GetStaticType()) {
         _event._handled_ = func(*dynamic_cast<T*>(&_event));
         return true;

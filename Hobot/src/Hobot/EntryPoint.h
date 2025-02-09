@@ -10,11 +10,15 @@ int main(int argc, char** argv) {
   LOG_WARNING("Insane Warning");
   LOG_INFO("Insane Info");
   LOG_SUCCESS("Insane Success");
+  LOG_ASSERT(false, "Assert failed");
+  LOG_ASSERT(true, "Assert success");
 
   CORE_LOG_ERROR("Insane Error on engine");
   CORE_LOG_WARNING("Insane Warning on engine");
   CORE_LOG_INFO("Insane Info on engine");
   CORE_LOG_SUCCESS("Insane Success on engine");
+  CORE_LOG_ASSERT(false, "Assert failed on engine");
+  CORE_LOG_ASSERT(true, "Assert success on engine");
 
   auto app = Hobot::CreateApplication();
   

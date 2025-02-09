@@ -10,10 +10,6 @@ workspace "Hobot"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
---Include dirs relative to the root folder (solution dir)
-includeDirs = {}
-includeDirs["glfw"] = "Hobot/vendor/glfw-3.4/include"
-
 include "Hobot/vendor/glfw-3.4" --Include another premake5 file, specific to glfw project
 
 project "Hobot"
@@ -28,8 +24,9 @@ project "Hobot"
   files
   {
     "%{prj.name}/src/**.h",
-    "%{prj.name}/src/**.cpp",
+    "%{prj.name}/src/**.cpp"
   }
+  
 
   pchheader "htpch.h"
   pchsource "Hobot/src/htpch.cpp"
@@ -37,7 +34,7 @@ project "Hobot"
   includedirs
   {
     "Hobot/src",
-    "%{includeDirs.glfw}"
+    "Hobot/vendor/glfw-3.4/include"
   }
 
   links
@@ -57,8 +54,12 @@ project "Hobot"
     }
 
   filter "configurations:Debug"
-    defines "_HOBOT_DEBUG_"
-    optimize "On"
+    defines
+    {
+      "_HOBOT_DEBUG_",
+      "_HOBOT_ENABLE_ASSERT_"
+    }
+    symbols "On"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE_"
@@ -80,8 +81,7 @@ project "Sandbox"
   files
   {
     "%{prj.name}/src/**.h",
-    "%{prj.name}/src/**.cpp",
-    "%{prj.name}/src/**.ixx"
+    "%{prj.name}/src/**.cpp"
   }
 
   includedirs
@@ -110,8 +110,12 @@ project "Sandbox"
     }
 
   filter "configurations:Debug"
-    defines "_HOBOT_DEBUG_"
-    optimize "On"
+    defines
+    {
+      "_HOBOT_DEBUG_",
+      "_HOBOT_ENABLE_ASSERT_"
+    }
+    symbols "On"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE_"

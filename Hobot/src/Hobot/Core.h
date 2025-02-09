@@ -15,5 +15,4 @@
 #define BIT(i) 1 << i
 
 //TODO
-  //FIX timestamp
-  //Assert/Print macro
+  //Add to github reminder to download visual c++ on windows

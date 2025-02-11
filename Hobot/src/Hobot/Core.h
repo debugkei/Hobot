@@ -16,3 +16,4 @@
 
 //TODO
   //Add to github reminder to download visual c++ on windows
+  //*.bat in .gitignore doesnt work

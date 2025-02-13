@@ -6,8 +6,10 @@
 #include"Core.h"
 
 namespace Hobot {
-  class HOBOT_API Application {
-  public:
+  class _HOBOT_API_ Application {
+    private:
+    bool _isRunning;
+    public:
     Application();
     virtual ~Application();
 

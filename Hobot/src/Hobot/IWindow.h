@@ -1,9 +1,9 @@
 #pragma once
 
 #include"Core.h"
-#include"Event.h"
+#include"Events/Event.h"
 
-export namespace Hobot{
+namespace Hobot{
   //Window Properties, a Data Transfer Object
   struct WindowProps final{
     //Properties
@@ -21,7 +21,7 @@ export namespace Hobot{
   };
 
   //Interface that represents a desktop system based Window
-  struct HOBOT_API IWindow{
+  struct _HOBOT_API_ IWindow{
     public:
     virtual ~IWindow() = default;
 

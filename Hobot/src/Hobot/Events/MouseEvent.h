@@ -3,7 +3,7 @@
 #include"Event.h"
 
 namespace Hobot {
-  class HOBOT_API MouseMovedEvent : public Event {
+  class _HOBOT_API_ MouseMovedEvent : public Event {
   private:
     float _x;
     float _y;
@@ -26,7 +26,7 @@ namespace Hobot {
     EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
   };
 
-  class HOBOT_API MouseScrolledEvent : public Event {
+  class _HOBOT_API_ MouseScrolledEvent : public Event {
   private:
     float _xDelta;
     float _yDelta;
@@ -50,7 +50,7 @@ namespace Hobot {
     EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
   };
 
-  class HOBOT_API MouseButtonEvent : public Event {
+  class _HOBOT_API_ MouseButtonEvent : public Event {
   protected:
     int _button;
     ~MouseButtonEvent() override = default;
@@ -61,7 +61,7 @@ namespace Hobot {
     EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse | EventCategoryMouseButton)
   };
 
-  class HOBOT_API MouseButtonPressedEvent : public MouseButtonEvent {
+  class _HOBOT_API_ MouseButtonPressedEvent : public MouseButtonEvent {
   public:
     ~MouseButtonPressedEvent() override = default;
 
@@ -76,7 +76,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(MouseButtonPressed)
   };
 
-  class HOBOT_API MouseButtonReleasedEvent : public MouseButtonEvent {
+  class _HOBOT_API_ MouseButtonReleasedEvent : public MouseButtonEvent {
   public:
     ~MouseButtonReleasedEvent() override = default;
 

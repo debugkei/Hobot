@@ -4,8 +4,7 @@ workspace "Hobot"
   configurations
   {
     "Debug",
-    "Release",
-    "Dist"
+    "Release"
   }
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -53,6 +52,18 @@ project "Hobot"
       "_HOBOT_BUILD_DLL_"
     }
 
+    files
+    {
+      "%{prj.name}/src/%{prj.name}/Platform/Windows/*.cpp",
+      "%{prj.name}/src/%{prj.name}/Platform/Windows/*.h"
+    }
+  
+  filter "system:linux"
+    defines
+    {
+      "_HOBOT_PLATFORM_LINUX_"
+    }
+
   filter "configurations:Debug"
     defines
     {
@@ -60,14 +71,13 @@ project "Hobot"
       "_HOBOT_ENABLE_ASSERT_"
     }
     symbols "On"
+    runtime "Debug"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE_"
     optimize "On"
+    runtime "Release"
 
-  filter "configurations:Dist"
-    defines "_HOBOT_DIST_"
-    optimize "On"
 
 project "Sandbox"
   location "Sandbox"
@@ -94,6 +104,12 @@ project "Sandbox"
     "Hobot"
   }
 
+  prebuildcommands
+  {
+    ("mkdir -p ../bin/" .. outputDir .. "/Sandbox/"),
+    ("cp ../bin/" .. outputDir .. "/Hobot/Hobot.dll ../bin/" .. outputDir .. "/Sandbox/")
+  }
+
   filter "system:windows"
     staticruntime "On"
     systemversion "latest"
@@ -103,11 +119,6 @@ project "Sandbox"
       "_HOBOT_PLATFORM_WINDOWS_"
     }
 
-    prebuildcommands
-    {
-      ("mkdir -p ../bin/" .. outputDir .. "/Sandbox/"),
-      ("cp ../bin/" .. outputDir .. "/Hobot/Hobot.dll ../bin/" .. outputDir .. "/Sandbox/")
-    }
 
   filter "configurations:Debug"
     defines
@@ -116,11 +127,9 @@ project "Sandbox"
       "_HOBOT_ENABLE_ASSERT_"
     }
     symbols "On"
+    runtime "Debug"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE_"
     optimize "On"
-
-  filter "configurations:Dist"
-    defines "_HOBOT_DIST_"
-    optimize "On"
+    runtime "Release"

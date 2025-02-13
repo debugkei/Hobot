@@ -3,7 +3,7 @@
 #include"Event.h"
 
 namespace Hobot {
-  class HOBOT_API WindowResizeEvent : public Event {
+  class _HOBOT_API_ WindowResizeEvent : public Event {
   private:
     std::size_t _width;
     std::size_t _height;
@@ -26,7 +26,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(WindowResize)
   };
 
-  class HOBOT_API WindowCloseEvent : public Event {
+  class _HOBOT_API_ WindowCloseEvent : public Event {
   public:
     ~WindowCloseEvent() override = default;
 
@@ -34,7 +34,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(WindowClose)
   };
 
-  class HOBOT_API WindowMovedEvent : public Event {
+  class _HOBOT_API_ WindowMovedEvent : public Event {
   private:
     float _x;
     float _y;
@@ -54,7 +54,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(WindowMoved)
   };
 
-  class HOBOT_API WindowFocusEvent : public Event {
+  class _HOBOT_API_ WindowFocusEvent : public Event {
   public:
 
     ~WindowFocusEvent() override = default;
@@ -63,7 +63,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(WindowFocus)
   };
 
-  class HOBOT_API WindowLostFocusEvent : public Event {
+  class _HOBOT_API_ WindowLostFocusEvent : public Event {
   public:
 
     ~WindowLostFocusEvent() override = default;
@@ -72,7 +72,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(WindowLostFocus)
   };
 
-  class HOBOT_API AppTickEvent : public Event {
+  class _HOBOT_API_ AppTickEvent : public Event {
   public:
 
     ~AppTickEvent() override = default;
@@ -81,7 +81,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(AppTick)
   };
 
-  class HOBOT_API AppUpdateEvent : public Event {
+  class _HOBOT_API_ AppUpdateEvent : public Event {
   public:
 
     ~AppUpdateEvent() override = default;
@@ -90,7 +90,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(AppUpdate)
   };
 
-  class HOBOT_API AppRenderEvent : public Event {
+  class _HOBOT_API_ AppRenderEvent : public Event {
   public:
 
     ~AppRenderEvent() override = default;

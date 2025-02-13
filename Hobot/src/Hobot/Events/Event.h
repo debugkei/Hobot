@@ -1,6 +1,6 @@
 #pragma once
 
-#include<htpch.h>
+#include"htpch.h"
 
 #include"Hobot/Core.h"
 
@@ -34,7 +34,7 @@ namespace Hobot {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-  class HOBOT_API Event {
+  class _HOBOT_API_ Event {
   protected:
     bool _handled_ = false;
   public:
@@ -49,7 +49,7 @@ namespace Hobot {
     virtual ~Event() = default;
   };
 
-  class HOBOT_API EventDispatcher {
+  class _HOBOT_API_ EventDispatcher {
   private:
     template<class T>
     using EventFunc = std::function<bool(T&)>;

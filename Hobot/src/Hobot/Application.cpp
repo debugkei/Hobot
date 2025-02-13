@@ -1,12 +1,15 @@
-#include<htpch.h>
+#include"htpch.h"
 
 #include"Application.h"
 
 #include"Hobot/Events/Event.h"
+#include"Hobot/IWindow.h"
 
 namespace Hobot {
-  Application::Application() {
-
+  static std::unique_ptr<IWindow> _pWindow;
+  Application::Application()
+  : _isRunning{ true } {
+    _pWindow = std::unique_ptr<IWindow>{ IWindow::Create() };
   }
 
   Application::~Application() {
@@ -14,6 +17,8 @@ namespace Hobot {
   }
 
   void Application::Run() {
-    while (true);
+    while (_isRunning){
+      _pWindow->OnUpdate();
+    }
   }
 }

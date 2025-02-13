@@ -1,17 +1,38 @@
 #pragma once
 
 #include"Core.h"
+#include"htpch.h"
 
 namespace Hobot {
+  //This function gets current timestamp
+  static auto GetTimestamp() {
+    auto now = std::chrono::system_clock::now();
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+    std::stringstream ss;
+    
+#ifdef _HOBOT_PLATFORM_WINDOWS_
+    tm time;
+    localtime_s(&time, &in_time_t);
+    ss << std::put_time(&time, "[%Y-%m-%d, %H:%M:%S]");
+#else
+    ss <<  std::put_time(std::localtime(&in_time_t), "[%Y-%m-%d, %H:%M:%S]");
+#endif // _HOBOT_PLATFORM_WINDOWS_
+    return ss.str();
+  }
+
   //The logger class, has static methods to log
-  class HOBOT_API Logger final {
+  class _HOBOT_API_ Logger final {
   private:
-    ~Logger();
-    Logger();
+    ~Logger() = default;
+    Logger() = default;
   public:
     //Logs to console in the format: [timestamp] preinfo: args, in color specified
     template<class...TArgs>
-    static void LogToConsole(const std::string& preinfo, const std::string& color, TArgs&&...);
+    static void LogToConsole(const std::string& preinfo, const std::string& color, TArgs&&...args){
+      std::cout << color << GetTimestamp() << ' ' << preinfo << ": ";
+      ((std::cout << std::forward<TArgs>(args)), ...);
+      std::cout << "\033[0m" << std::endl;
+    }
   };
 }
 

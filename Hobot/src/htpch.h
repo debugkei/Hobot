@@ -20,3 +20,6 @@
 #include<functional>
 #include<sstream>
 #include<chrono>
+
+//This project
+#include"Hobot/Logger.h"

@@ -52,7 +52,7 @@ filter "system:windows"
 
   defines
   {
-    "_GLFW_WIN32_",
+    "_GLFW_WIN32",
     "_CRT_SECURE_NO_WARNINGS"
   }
 

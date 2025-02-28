@@ -57,6 +57,11 @@ project "Hobot"
       "%{prj.name}/src/%{prj.name}/Platform/Windows/*.cpp",
       "%{prj.name}/src/%{prj.name}/Platform/Windows/*.h"
     }
+    
+    links
+    {
+      "Gdi32"
+    }
   
   filter "system:linux"
     defines

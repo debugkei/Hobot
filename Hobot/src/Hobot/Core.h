@@ -17,7 +17,6 @@
 #define BIT(i) 1 << i
 
 //TODO
-  //Add to github reminder to download visual c++ on windows
+  //Add to github reminder to download visual c++ on windows, and vendors
   //"build" folder for building
 //FIX
-  //glfwInit() doesnt work

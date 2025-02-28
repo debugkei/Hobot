@@ -4,6 +4,8 @@
 #include"htpch.h"
 
 namespace Hobot {
+  //INFO: Get timestamp for linux isnt thread safe
+
   //This function gets current timestamp
   static auto GetTimestamp() {
     auto now = std::chrono::system_clock::now();

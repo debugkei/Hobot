@@ -1,6 +1,6 @@
 # Hobot
 This is my project, more like a code along with TheCherno's game engine series, in which I'm trying to implement a game engine.  
-This repository isn't open for pull requests yet.  
+For now I'll not accept any pull requests.  
 Also it will not have releases yet.
 
 # Vendors/Dependencies

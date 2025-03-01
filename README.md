@@ -6,8 +6,8 @@ Also it will not have releases yet.
 # How to compile
 For compiling, the project uses premake.  
 Premake can be used to generate project files for make, or vs2022, or xcode.  
-Just execute premake in project directory:
-> path/to/premake5 what_generating_for
+Just execute premake in project directory:  
+> path/to/premake5 what_generating_for  
 Right now the premake project config file was only tested on Windows with MSVC and mingw gcc. 
 
 # Platforms

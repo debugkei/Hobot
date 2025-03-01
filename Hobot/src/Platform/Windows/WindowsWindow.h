@@ -19,7 +19,7 @@ namespace Hobot{
 
     GLFWwindow* _window;
     WindowData _data;
-
+    
     void Init(const WindowProps& props);
     void Shutdown();
     public:

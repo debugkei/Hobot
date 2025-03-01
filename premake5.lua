@@ -9,7 +9,7 @@ workspace "Hobot"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-include "Hobot/vendor/glfw-3.4" --Include another premake5 file, specific to glfw project
+include "Hobot/vendors/glfw-3.4" --Include another premake5 file, specific to glfw project
 
 project "Hobot"
   location "Hobot"
@@ -33,7 +33,7 @@ project "Hobot"
   includedirs
   {
     "Hobot/src",
-    "Hobot/vendor/glfw-3.4/include"
+    "Hobot/vendors/glfw-3.4/include"
   }
 
   links

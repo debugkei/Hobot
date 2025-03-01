@@ -9,6 +9,11 @@ Premake can be used to generate project files for make, or vs2022, or xcode.
 Just execute premake in project directory:
 > path/to/premake5 what_generating_for
 
+# Platforms
+So far I only used Windows with vs code and vs2022.  
+My goal is to make it cross platform.  
+Goal wasnt achieved yet.
+
 # Vendors/Dependencies
 I used:
 * premake, its license can be found in vendor/premake.

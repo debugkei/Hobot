@@ -17,5 +17,5 @@ Goal wasnt achieved yet.
 
 # Vendors/Dependencies
 I used:
-* premake, its license can be found in vendor/premake.
-* glfw3-4, its license can be found in Hobot/vendor/glfw-3.4.  
+* premake, its license can be found in vendor/premake/  
+* glfw3-4, its license can be found in Hobot/vendor/glfw-3.4/    

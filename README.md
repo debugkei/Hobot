@@ -3,6 +3,12 @@ This is my project, more like a code along with TheCherno's game engine series, 
 For now I'll not accept any pull requests.  
 Also it will not have releases yet.
 
+# How to compile
+For compiling, the project uses premake.  
+Premake can be used to generate project files for make, or vs2022, or xcode.  
+Just execute premake in project directory:
+> premake5 what_generating_for
+
 # Vendors/Dependencies
 I used:
 * premake, its license can be found in vendor/premake.

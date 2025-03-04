@@ -21,7 +21,7 @@ namespace Hobot{
   };
 
   //Interface that represents a desktop system based Window
-  struct _HOBOT_API_ IWindow{
+  struct _HOBOT_API IWindow{
     public:
     virtual ~IWindow() = default;
 

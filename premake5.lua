@@ -48,8 +48,8 @@ project "Hobot"
 
     defines
     {
-      "_HOBOT_PLATFORM_WINDOWS_",
-      "_HOBOT_BUILD_DLL_"
+      "_HOBOT_PLATFORM_WINDOWS",
+      "_HOBOT_BUILD_DLL"
     }
 
     files
@@ -66,20 +66,20 @@ project "Hobot"
   filter "system:linux"
     defines
     {
-      "_HOBOT_PLATFORM_LINUX_"
+      "_HOBOT_PLATFORM_LINUX"
     }
 
   filter "configurations:Debug"
     defines
     {
-      "_HOBOT_DEBUG_",
-      "_HOBOT_ENABLE_ASSERT_"
+      "_HOBOT_DEBUG",
+      "_HOBOT_ENABLE_ASSERT"
     }
     symbols "On"
     runtime "Debug"
 
   filter "configurations:Release"
-    defines "_HOBOT_RELEASE_"
+    defines "_HOBOT_RELEASE"
     optimize "On"
     runtime "Release"
 
@@ -121,15 +121,15 @@ project "Sandbox"
 
     defines
     {
-      "_HOBOT_PLATFORM_WINDOWS_"
+      "_HOBOT_PLATFORM_WINDOWS"
     }
 
 
   filter "configurations:Debug"
     defines
     {
-      "_HOBOT_DEBUG_",
-      "_HOBOT_ENABLE_ASSERT_"
+      "_HOBOT_DEBUG",
+      "_HOBOT_ENABLE_ASSERT"
     }
     symbols "On"
     runtime "Debug"

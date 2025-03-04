@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef _HOBOT_PLATFORM_WINDOWS_
+#ifdef _HOBOT_PLATFORM_WINDOWS
   #include<Windows.h>
 #endif // _HOBOT_PLATFORM_WINDOWS_
 

@@ -12,7 +12,7 @@ namespace Hobot {
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
     std::stringstream ss;
     
-#ifdef _HOBOT_PLATFORM_WINDOWS_
+#ifdef _HOBOT_PLATFORM_WINDOWS
     tm time;
     localtime_s(&time, &in_time_t);
     ss << std::put_time(&time, "[%Y-%m-%d, %H:%M:%S]");
@@ -23,7 +23,7 @@ namespace Hobot {
   }
 
   //The logger class, has static methods to log
-  class _HOBOT_API_ Logger final {
+  class _HOBOT_API Logger final {
   private:
     ~Logger() = default;
     Logger() = default;
@@ -49,7 +49,7 @@ namespace Hobot {
 //Log success to console, green color applied
 #define CORE_LOG_SUCCESS(...) Hobot::Logger::LogToConsole("Hobot Success", "\033[32m", __VA_ARGS__, "\n{ ", __FILE__, " }")
 
-#ifdef _HOBOT_ENABLE_ASSERT_
+#ifdef _HOBOT_ENABLE_ASSERT
 //Assert Log to console, if value passed is false, then prints out, only in Debug, blue color applied
 #define CORE_LOG_ASSERT(cond,...) if (!cond) Hobot::Logger::LogToConsole("Hobot Assertion failed", "\033[34m", __VA_ARGS__, "\n{ ", __FILE__, " }")
 #else
@@ -69,7 +69,7 @@ namespace Hobot {
 //Log success to console, green color applied
 #define LOG_SUCCESS(...)      Hobot::Logger::LogToConsole("App Success", "\033[32m", __VA_ARGS__, "\n{ ", __FILE__, " }")
 
-#ifdef _HOBOT_ENABLE_ASSERT_
+#ifdef _HOBOT_ENABLE_ASSERT
 //Assert Log to console, if value passed is false, then prints out, only in Debug, blue color applied
 #define LOG_ASSERT(cond,...) if (!cond) Hobot::Logger::LogToConsole("App Assertion failed", "\033[34m", __VA_ARGS__, "\n{ ", __FILE__, " }")
 #else

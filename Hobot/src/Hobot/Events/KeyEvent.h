@@ -3,7 +3,7 @@
 #include"Event.h"
 
 namespace Hobot {
-  class _HOBOT_API_ KeyEvent : public Event {
+  class _HOBOT_API KeyEvent : public Event {
   protected:
     int _keyCode;
 
@@ -19,7 +19,7 @@ namespace Hobot {
     EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
   };
 
-  class _HOBOT_API_ KeyPressedEvent : public KeyEvent {
+  class _HOBOT_API KeyPressedEvent : public KeyEvent {
   private:
     int _repeatCount;
   public:
@@ -39,7 +39,7 @@ namespace Hobot {
     EVENT_CLASS_TYPE(KeyPressed)
   };
 
-  class _HOBOT_API_ KeyReleasedEvent : public KeyEvent {
+  class _HOBOT_API KeyReleasedEvent : public KeyEvent {
   public:
     KeyReleasedEvent(int keyCode)
       : KeyEvent(keyCode) { }

@@ -34,7 +34,7 @@ namespace Hobot {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-  class _HOBOT_API_ Event {
+  class _HOBOT_API Event {
   protected:
     bool _handled_ = false;
   public:
@@ -49,7 +49,7 @@ namespace Hobot {
     virtual ~Event() = default;
   };
 
-  class _HOBOT_API_ EventDispatcher {
+  class _HOBOT_API EventDispatcher {
   private:
     template<class T>
     using EventFunc = std::function<bool(T&)>;

@@ -11,6 +11,10 @@ namespace Hobot {
     MouseMovedEvent(float x, float y)
       : _x(x), _y(y) { }
 
+    // All ctors for efficiency
+    inline MouseMovedEvent(MouseMovedEvent&&) = default;
+    inline MouseMovedEvent(const MouseMovedEvent&) = default;
+
     inline float GetX() const { return _x; }
     inline float GetY() const { return _y; }
 
@@ -34,6 +38,10 @@ namespace Hobot {
     MouseScrolledEvent(float xDelta, float yDelta)
       : _xDelta(xDelta), _yDelta(yDelta) {
     }
+
+    // All ctors for efficiency
+    inline MouseScrolledEvent(MouseScrolledEvent&&) = default;
+    inline MouseScrolledEvent(const MouseScrolledEvent&) = default;
 
     inline float GetXDelta() const { return _xDelta; }
     inline float GetYDelta() const { return _yDelta; }
@@ -68,6 +76,10 @@ namespace Hobot {
     MouseButtonPressedEvent(int button)
       : MouseButtonEvent(button) { }
 
+    // All ctors for efficiency
+    inline MouseButtonPressedEvent(MouseButtonPressedEvent&&) = default;
+    inline MouseButtonPressedEvent(const MouseButtonPressedEvent&) = default;
+
     std::string ToString() const override {
       std::stringstream ss;
       ss << "MouseButtonPressedEvent: " << _button;
@@ -83,6 +95,10 @@ namespace Hobot {
     MouseButtonReleasedEvent(int button)
       : MouseButtonEvent(button) {
     }
+
+    // All ctors for efficiency
+    inline MouseButtonReleasedEvent(MouseButtonReleasedEvent&&) = default;
+    inline MouseButtonReleasedEvent(const MouseButtonReleasedEvent&) = default;
 
     std::string ToString() const override {
       std::stringstream ss;

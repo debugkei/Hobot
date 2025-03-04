@@ -27,11 +27,13 @@ namespace Hobot {
     EventCategoryMouseButton  = BIT(4)
   };
 
+//Defines the necessary methods that are needed in an event class
 #define EVENT_CLASS_TYPE(type)\
   static EventType GetStaticType() { return EventType::##type; }\
   virtual EventType GetEventType() const override { return GetStaticType(); }\
   virtual std::string GetName() const override { return #type; }
 
+//Defines category for an event
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
   class _HOBOT_API Event {
@@ -43,7 +45,7 @@ namespace Hobot {
     virtual int GetCategoryFlags() const = 0;
     virtual std::string ToString() const { return GetName(); }
 
-    bool IsInCategory(EventCategory category) {
+    bool IsInCategory(const EventCategory& category) {
       return GetCategoryFlags() & category;
     }
     virtual ~Event() = default;
@@ -57,6 +59,9 @@ namespace Hobot {
   public:
     EventDispatcher(Event& event)
       : _event(event) { }
+
+    inline EventDispatcher(EventDispatcher&&) = default;
+    inline EventDispatcher(const EventDispatcher&) = default;
 
     template<class T>
     bool Dispatch(EventFunc<T> func) {

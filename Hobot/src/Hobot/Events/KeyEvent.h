@@ -28,6 +28,10 @@ namespace Hobot {
 
     ~KeyPressedEvent() override = default;
 
+    // All ctors for efficiency
+    inline KeyPressedEvent(KeyPressedEvent&&) = default;
+    inline KeyPressedEvent(const KeyPressedEvent&) = default;
+
     inline int GetRepeatCount() const { return _repeatCount; }
 
     std::string ToString() const override {
@@ -45,6 +49,10 @@ namespace Hobot {
       : KeyEvent(keyCode) { }
 
     ~KeyReleasedEvent() override = default;
+
+    // All ctors for efficiency
+    inline KeyReleasedEvent(KeyReleasedEvent&&) = default;
+    inline KeyReleasedEvent(const KeyReleasedEvent&) = default;
 
     std::string ToString() const override {
       std::stringstream ss;

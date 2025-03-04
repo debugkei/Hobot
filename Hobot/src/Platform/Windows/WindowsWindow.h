@@ -17,11 +17,11 @@ namespace Hobot{
       IWindow::EventCallbackFunc EventCallback;
     };
 
-    GLFWwindow* _window;
+    GLFWwindow* _pWindow;
     WindowData _data;
     
-    void Init(const WindowProps& props);
-    void Shutdown();
+    inline void Init(const WindowProps& props) override;
+    inline void Shutdown() const override;
     public:
     //Ctor & Dtor
     WindowsWindow(const WindowProps& props);

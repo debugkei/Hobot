@@ -1,16 +1,21 @@
 #pragma once
 
 #include"Core.h"
+#include"Events/Event.h"
 
 namespace Hobot {
   class _HOBOT_API Application {
     private:
     bool _isRunning;
+    inline bool OnWindowClose();
     public:
-    Application();
-    virtual ~Application();
+    inline Application();
+    inline virtual ~Application();
 
-    void Run();
+    //Here all dispatching happens
+    inline void OnEvent(const Event& e);
+
+    inline void Run() const;
   };
 
   //To be defined in a client

@@ -3,6 +3,9 @@
 #include"WindowsWindow.h"
 
 #include"Hobot/IWindow.h"
+#include"Hobot/Events/ApplicationEvent.h"
+#include"Hobot/Events/MouseEvent.h"
+#include"Hobot/Events/KeyEvent.h"
 
 namespace Hobot{
   static bool isglfwInit = false;
@@ -37,19 +40,99 @@ namespace Hobot{
       isglfwInit = true;
     }
 
-    _window = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
-    glfwMakeContextCurrent(_window);
-    glfwSetWindowUserPointer(_window, &_data);
+    _pWindow = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
+    glfwMakeContextCurrent(_pWindow);
+    glfwSetWindowUserPointer(_pWindow, &_data);
     SetVSync(true);
+
+    //Set callbacks
+  
+    glfwSetWindowSizeCallback(_pWindow, [](GLFWwindow* pWindow, int width, int height){
+      //Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+      data.Width = width;
+      data.Height = height;
+
+      //Dispatch
+      data.EventCallback(WindowResizeEvent(width, height));
+    });
+
+    glfwSetWindowCloseCallback(_pWindow, [](GLFWwindow* pWindow) {
+      // Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+
+      // Dispatch
+      data.EventCallback(WindowCloseEvent());
+    });
+
+    glfwSetKeyCallback(_pWindow, [](GLFWwindow* pWindow, int key, int scancode, int action, int mods) {
+      // Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+
+      //TODO: key has to be converted into Hobot key
+      //TODO: add repeat count, glfw already handles the right timing tho
+      switch(action){
+        case GLFW_PRESS:
+          // Dispatch
+          data.EventCallback(KeyPressedEvent(key, 0));
+          break;
+        case GLFW_RELEASE:
+          // Dispatch
+          data.EventCallback(KeyReleasedEvent(key));
+          break;
+        case GLFW_REPEAT:
+          // Dispatch
+          data.EventCallback(KeyPressedEvent(key, 1));
+          break;
+      }
+    });
+
+    glfwSetMouseButtonCallback(_pWindow, [](GLFWwindow* pWindow, int button, int action, int mods) {
+      // Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+
+      //TODO: key has to be converted into Hobot key
+      switch(action){
+        case GLFW_PRESS:
+          // Dispatch
+          data.EventCallback(MouseButtonPressedEvent(button));
+          break;
+        case GLFW_RELEASE:
+          // Dispatch
+          data.EventCallback(MouseButtonReleasedEvent(button));
+          break;
+      }
+    });
+
+    glfwSetScrollCallback(_pWindow, [](GLFWwindow* pWindow, double x, double y) {
+      // Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+
+      // Dispatch
+      data.EventCallback(MouseScrolledEvent(x, y));
+    });
+
+    glfwSetCursorPosCallback(_pWindow, [](GLFWwindow* pWindow, double x, double y) {
+      // Get the data from SetWindowUserPointer
+      WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+
+      // Dispatch
+      data.EventCallback(MouseMovedEvent(x, y));
+    });
+    
+    //For now just log an error
+    glfwSetErrorCallback([](int error, const char* description){
+      LOG_ERROR("GLFW error (", error, ") ", description);
+    });
   }
 
-  void WindowsWindow::Shutdown(){
-    glfwDestroyWindow(_window);
+  inline void WindowsWindow::Shutdown() const{
+    glfwDestroyWindow(_pWindow);
   }
 
-  void WindowsWindow::OnUpdate(){
+  inline void WindowsWindow::OnUpdate(){
     glfwPollEvents();
-    glfwSwapBuffers(_window);
+    glfwSwapBuffers(_pWindow);
   }
 
   void WindowsWindow::SetVSync(bool enabled){

@@ -22,7 +22,10 @@ namespace Hobot {
     public:
     virtual ~IWindow() = default;
 
-    using EventCallbackFunc = std::function<void(Event&)>;
+    using EventCallbackFunc = std::function<void(const Event&)>;
+
+    virtual inline void Init(const WindowProps& props) = 0;
+    virtual inline void Shutdown() const = 0;
 
     // Callbacks
     virtual void OnUpdate() = 0;

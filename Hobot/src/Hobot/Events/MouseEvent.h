@@ -83,6 +83,7 @@ namespace Hobot {
     std::string ToString() const override {
       std::stringstream ss;
       ss << "MouseButtonPressedEvent: " << _button;
+      return ss.str();
     }
 
     EVENT_CLASS_TYPE(MouseButtonPressed)
@@ -103,6 +104,7 @@ namespace Hobot {
     std::string ToString() const override {
       std::stringstream ss;
       ss << "MouseButtonReleasedEvent: " << _button;
+      return ss.str();
     }
 
     EVENT_CLASS_TYPE(MouseButtonReleased)

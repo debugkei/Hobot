@@ -29,16 +29,20 @@ namespace Hobot {
 
 //Defines the necessary methods that are needed in an event class
 #define EVENT_CLASS_TYPE(type)\
-  static EventType GetStaticType() { return EventType::##type; }\
+  static EventType GetStaticType() { return EventType::type; }\
   virtual EventType GetEventType() const override { return GetStaticType(); }\
   virtual std::string GetName() const override { return #type; }
 
 //Defines category for an event
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
+  //Forward declare
+  class _HOBOT_API EventDispatcher;
+
   class _HOBOT_API Event {
   protected:
-    bool _handled_ = false;
+    friend EventDispatcher; //friend for EventDispatcher to be able to dispatch
+    mutable bool _handled_ = false; //mutable for EventDispatcher to be able to dispatch, because Events are const, since this is the only exception its mutable
   public:
     virtual EventType GetEventType() const = 0;
     virtual std::string GetName() const = 0;
@@ -55,18 +59,18 @@ namespace Hobot {
   private:
     template<class T>
     using EventFunc = std::function<bool(T&)>;
-    Event& _event;
+    const Event& _event;
   public:
-    EventDispatcher(Event& event)
+    EventDispatcher(const Event& event)
       : _event(event) { }
 
     inline EventDispatcher(EventDispatcher&&) = default;
     inline EventDispatcher(const EventDispatcher&) = default;
 
     template<class T>
-    bool Dispatch(EventFunc<T> func) {
+    bool Dispatch(EventFunc<const T> func) {
       if (_event.GetEventType() == T::GetStaticType()) {
-        _event._handled_ = func(*dynamic_cast<T*>(&_event));
+        _event._handled_ = func(dynamic_cast<const T&>(_event));
         return true;
       }
       return false;

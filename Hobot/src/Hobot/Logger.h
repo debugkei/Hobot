@@ -4,7 +4,7 @@
 #include"htpch.h"
 
 namespace Hobot {
-  //INFO: Get timestamp for linux isnt thread safe
+  //TODO: Get timestamp for linux isnt thread safe, fix
 
   //This function gets current timestamp
   static auto GetTimestamp() {

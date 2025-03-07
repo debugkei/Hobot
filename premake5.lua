@@ -77,11 +77,13 @@ project "Hobot"
     }
     symbols "On"
     runtime "Debug"
+    -- buildoptions "/MDd"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE"
     optimize "On"
     runtime "Release"
+    -- buildoptions "/MD"
 
 
 project "Sandbox"
@@ -133,8 +135,10 @@ project "Sandbox"
     }
     symbols "On"
     runtime "Debug"
+    -- buildoptions "/MDd"
 
   filter "configurations:Release"
     defines "_HOBOT_RELEASE_"
     optimize "On"
     runtime "Release"
+    -- buildoptions "/MD"

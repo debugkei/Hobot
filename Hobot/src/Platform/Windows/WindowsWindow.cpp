@@ -122,7 +122,7 @@ namespace Hobot{
     
     //For now just log an error
     glfwSetErrorCallback([](int error, const char* description){
-      LOG_ERROR("GLFW error (", error, ") ", description);
+      CORE_LOG_ERROR("GLFW error (", error, ") ", description);
     });
   }
 

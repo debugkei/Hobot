@@ -49,6 +49,8 @@ namespace Hobot {
     virtual int GetCategoryFlags() const = 0;
     virtual std::string ToString() const { return GetName(); }
 
+    inline bool Handled() const { return _handled_; } 
+
     bool IsInCategory(const EventCategory& category) {
       return GetCategoryFlags() & category;
     }
